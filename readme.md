@@ -2,8 +2,6 @@
 
 A web app serving masjids details and providing a space to share feedback about them.
 
-The backend was devolped by me from scratch. Please note that the frontend was made following a tutorial as the purpose of it was to have an idea of how the react framework intarct's with the backend.
-
 
 ## Installation
 ```bash
@@ -171,4 +169,4 @@ Possible erros:
 
 
 ## Contributing
-This project was created to practice newly acquired skills and is not intended for real usage however, if you have any recommendations for improvements or have noticed something that could have been implemented better please don't hesitate to open a new issue I would really appricate it as will help me in my learning journey. 
+This project was created for practice practice only its not intended realword use. However any reccomndation are welcome. Wiether its a major desgin flaw or a best prctice advice please don't hesitate to open a new issue I am always happy to learn.
