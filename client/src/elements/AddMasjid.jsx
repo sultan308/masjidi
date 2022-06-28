@@ -20,7 +20,7 @@ const AddMasjid = () => {
           
         
            
-           addMasjid(response.data.data[0]);
+           addMasjid(response.data.data);
            setMasjidName("");
            setMasjidLocation("");
           

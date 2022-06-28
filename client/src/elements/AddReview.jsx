@@ -37,7 +37,7 @@ const AddReview = () => {
             });
 
 
-            addReview(response.data.data[0]);
+            addReview(response.data.data);
 
             const masjid = await MasjdiApi.get(`/${masjidId}`);
             setSelectedMasjid(masjid.data.data);
