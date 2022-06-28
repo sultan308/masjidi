@@ -1,0 +1,10 @@
+x                                    Table "public.masjid"
+  Column  |         Type          | Collation | Nullable |              Default               
+----------+-----------------------+-----------+----------+------------------------------------
+ id       | bigint                |           | not null | nextval('masjid_id_seq'::regclass)
+ name     | character varying(80) |           | not null | 
+ location | text                  |           | not null | 
+Indexes:
+    "masjid_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "reviews" CONSTRAINT "reviews_masjid_id_fkey" FOREIGN KEY (masjid_id) REFERENCES masjid(id)
