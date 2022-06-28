@@ -44,8 +44,10 @@ Note : After clicking update the user will be redirected to the home page.
 ## API Usage
 
 ### ```GET``` Requests:
-
+---
 #### ```{host}/api/v1/masjid```
+
+
 ##### Request body
 none
 
@@ -109,9 +111,10 @@ Example JSON
 ```
 Possible erros:
 * StatusCode : ```500```  and msg: ```"Error occured"``` | internal server error
- 
-#### ```{host}/api/v1/masjid/:id```
-Where ```:id``` is the id of the requested masjid
+
+---
+#### ```{host}/api/v1/masjid/:masjidId/reviews```
+Where ```:masjidId``` is the id of the requested masjid
 
 ##### Request body
 none
@@ -165,8 +168,77 @@ Possible erros:
 * StatusCode : ```404```  and msg: ```"Masjid doesn't exist"``` | Masjid wasn't found.
 * StatusCode : ```500```  and msg: ```"Error occured"``` | internal server error.
 
+#### ```{host}/api/v1/masjid/:masjidId```
+Where ```:masjidId``` is the id of the requested masjid
+
+##### Request body
+none
 
 
+**Successful Response** : 
+
+```200``` and JSON with attributes :
+
+* ```status``` Always equal success if the request was successful
+* ```length``` The number of review ojects returned
+* ```data``` An array of review objects Each having:
+  
+  * ```id``` Review id
+  * ```masjid_id``` Masjid id
+  * ```firstname``` Reviewer first name
+  * ```lastname``` Reviewer Last name
+  * ```review``` the review 
+  * ```rating``` rating between 1 and 5 inclusive
+  
+Example JSON
+```json
+{
+    "status": "success",
+    "length": 4,
+    "data": [
+        {
+            "id": "66",
+            "masjid_id": "58",
+            "firstname": "Ahmed",
+            "lastname": "Mohamed",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst quisque sagittis purus sit amet. At volutpat diam ut venenatis.",
+            "rating": 5
+        },
+        {
+            "id": "68",
+            "masjid_id": "58",
+            "firstname": "Mohamed",
+            "lastname": "Ali",
+            "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst quisque sagittis purus sit amet. At volutpat diam ut venenatis.",
+            "rating": 4
+        }
+    ]
+    
+}
+```
+
+**Error Responses :** 
+
+
+Error status code and JSON with attributes :
+* ```status``` Always equal Fail if the request was failed
+* ```statusCode``` HTTP error status code
+* ```msg``` error message
+  
+Example JSON
+```json
+{
+    "status": "Fail",
+    "statusCode": 400,
+    "msg": "Masjid id needs to be a number."
+}
+```
+Possible erros:
+* StatusCode : ```400```  and msg: ```"Masjid id needs to be a number."``` | Supplied id wasn't an integer.
+* StatusCode : ```404```  and msg: ```"Masjid doesn't exist"``` | Masjid wasn't found.
+* StatusCode : ```500```  and msg: ```"Error occured"``` | internal server error.
+
+### ```POST``` Requests:
 
 ## Contributing
 This project was created for practice practice only its not intended realword use. However any reccomndation are welcome. Wiether its a major desgin flaw or a best prctice advice please don't hesitate to open a new issue I am always happy to learn.
