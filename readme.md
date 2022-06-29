@@ -27,7 +27,7 @@ Then rename the ".example.env" file in the server folder to .env and enter your 
 ![Masjid page image](https://raw.githubusercontent.com/sultan308/masjidi/main/imgs/masjid-page.png)
 #### From the Masjid page the user can :
 * Add a new review
-* View masjid revies 
+* View masjid reviews 
 * See all the masjid details
   
 Note : The review color changes in correspondence with the rating value.
@@ -478,4 +478,4 @@ Possible erros:
 * StatusCode : ```500```  and msg: ```"Error occured"``` | internal server error.
 
 ## Contributing
-This project was created for practice practice only its not intended realword use. However any reccomndation are welcome. Wiether its a major desgin flaw or a best prctice advice please don't hesitate to open a new issue I am always happy to learn.
+This project was created for practice purposes only its not intended realword use. However any reccomndation are welcome. Wiether its a major desgin flaw or a best prctice advice please don't hesitate to open a new issue I am always happy to learn.
