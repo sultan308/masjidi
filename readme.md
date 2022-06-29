@@ -113,8 +113,8 @@ Possible erros:
 * StatusCode : ```500```  and msg: ```"Error occured"``` | internal server error
 
 ---
-#### ```{host}/api/v1/masjid/:masjidId/reviews```
-Where ```:masjidId``` is the id of the requested masjid
+#### ```{host}/api/v1/masjid/:id``
+Where ```:id``` is the id of the requested masjid
 
 ##### Request body
 none
@@ -168,7 +168,8 @@ Possible erros:
 * StatusCode : ```404```  and msg: ```"Masjid doesn't exist"``` | Masjid wasn't found.
 * StatusCode : ```500```  and msg: ```"Error occured"``` | internal server error.
 
-#### ```{host}/api/v1/masjid/:masjidId```
+---
+#### ```{host}/api/v1/masjid/:id/reviews```
 Where ```:masjidId``` is the id of the requested masjid
 
 ##### Request body
@@ -239,6 +240,144 @@ Possible erros:
 * StatusCode : ```500```  and msg: ```"Error occured"``` | internal server error.
 
 ### ```POST``` Requests:
+---
+#### ```{host}/api/v1/masjid```
 
+
+##### Request body
+
+JSON with attributes :
+* ```name``` | String | Masjid name
+* ```location``` | String | masjid location
+Example JSON
+```json
+{
+    "name" : "Masjid Name",
+    "location": "Masjid Location"
+}
+```
+**Successful Response** : 
+
+```201``` and JSON with attributes :
+
+* ```status``` Always equal success if the request was successful
+* ```data``` the created masjid object with attributes:
+  
+  * ```id``` Masjid id
+  * ```name``` Masjid name
+  * ```location``` Masjid location
+  
+Example JSON
+```json
+{
+    "status": "success",
+    "data": {
+        "id": "59",
+        "name": "Masjid Name",
+        "location": "Masjid Location"
+    }
+}
+```
+
+**Error Responses :** 
+
+
+Error status code and JSON with attributes :
+* ```status``` Always equal Fail if the request was failed
+* ```statusCode``` HTTP error status code
+* ```msg``` error message
+  
+Example JSON
+```json
+{
+    "status": "Fail",
+    "statusCode": 400,
+    "msg": "Request body needs to have name and location"
+}
+```
+Possible erros:
+* StatusCode : ```400```  and msg: ```"Request body needs to have name and location."``` | Name or location weren't supplied in the request body.
+* StatusCode : ```400```  and msg: ```"name and location needs to be a string."``` | Name or location aren't string.
+* StatusCode : ```400```  and msg: ```"name and location can't be empty"``` | Name or location attributes where empty.
+* StatusCode : ```500```  and msg: ```"Error occured"``` | internal server error.
+
+---
+
+#### ```{host}/api/v1/masjid/:id/reviews```
+
+
+##### Request body
+
+JSON with attributes :
+* ```firstName``` | String | Reviewer first name
+* ```lastName``` | String | Reviewer last name
+Example JSON
+* ```review``` | String | Reviwe content
+* ```rating``` | Integer | Rating between 1 and 5 inclusive
+Example JSON
+```json
+{
+    "firstName" : "Ahmed",
+    "lastName" : "Mohamed",
+    "review" :"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst quisque sagittis purus sit amet. At volutpat diam ut venenatis.",
+    "rating" : 5
+}
+```
+**Successful Response** : 
+
+```201``` and JSON with attributes :
+
+* ```status``` Always equal success if the request was successful
+* ```data``` the created masjid object with attributes:
+  
+  * ```id``` Review id
+  * ```masjid_id``` Masjid id
+  * ```firstname``` Reviewer first name
+  * ```lastname``` Reviewer Last name
+  * ```review``` the review 
+  * ```rating``` rating between 1 and 5 inclusive
+  
+Example JSON
+```json
+{
+    "status": "success",
+    "data": {
+        "id": "70",
+        "masjid_id": "58",
+        "firstname": "Ahmed",
+        "lastname": "Mohamed",
+        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Hac habitasse platea dictumst quisque sagittis purus sit amet. At volutpat diam ut venenatis.",
+        "rating": 5
+    }
+}
+```
+
+**Error Responses :** 
+
+
+Error status code and JSON with attributes :
+* ```status``` Always equal Fail if the request was failed
+* ```statusCode``` HTTP error status code
+* ```msg``` error message
+  
+Example JSON
+```json
+{
+    "status": "Fail",
+    "statusCode": 400,
+    "msg": "Request body needs to have firstName, lastName, review,  rating"
+}
+```
+Possible erros:
+* StatusCode : ```400```  and msg: ```"Request body needs to have firstName, lastName, review,  rating"``` | A required attribute weren't supplied in the request body.
+* StatusCode : ```400```  and msg: ```"firstName, lastName and review needs to be a string."``` | The firstName, lastName or review supplied in the request body weren't of type string.
+* StatusCode : ```400```  and msg: ```"firstName, lastName and review can't be empty."``` | The firstName, lastName or review supplied in the request body were empty. 
+* StatusCode : ```400```  and msg: ```"rating need to be a number between 1 and 5 inclusive."``` | The supplied rating was either not an integer, bigger than 5 or less than 1. 
+* StatusCode : ```400```  and msg: ```"Masjid id needs to be a number."``` | Supplied id wasn't an integer.
+* StatusCode : ```404```  and msg: ```"Masjid doesn't exist"``` | Masjid wasn't found.
+* StatusCode : ```500```  and msg: ```"Error occured"``` | internal server error.
+
+### ```PUT``` Requests:
+### ```DELETE``` Requests:
 ## Contributing
 This project was created for practice practice only its not intended realword use. However any reccomndation are welcome. Wiether its a major desgin flaw or a best prctice advice please don't hesitate to open a new issue I am always happy to learn.
