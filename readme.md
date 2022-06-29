@@ -454,7 +454,7 @@ none
 
 **Successful Response** : 
 
-```204``` and JSON with an empty body
+**```204``` an empty body.**
 
 **Error Responses :** 
 
