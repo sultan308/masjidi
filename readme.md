@@ -71,7 +71,7 @@ Example JSON
 { 
     "status": "success" ,
     
-    "length": 4 ,
+    "length": 2 ,
 
     "data": [
         {
@@ -113,7 +113,7 @@ Possible erros:
 * StatusCode : ```500```  and msg: ```"Error occured"``` | internal server error
 
 ---
-#### ```{host}/api/v1/masjid/:id``
+#### ```{host}/api/v1/masjid/:id```
 Where ```:id``` is the id of the requested masjid
 
 ##### Request body
@@ -170,7 +170,7 @@ Possible erros:
 
 ---
 #### ```{host}/api/v1/masjid/:id/reviews```
-Where ```:masjidId``` is the id of the requested masjid
+Where ```:id``` is the id of the requested masjid
 
 ##### Request body
 none
@@ -195,7 +195,7 @@ Example JSON
 ```json
 {
     "status": "success",
-    "length": 4,
+    "length": 2,
     "data": [
         {
             "id": "66",
